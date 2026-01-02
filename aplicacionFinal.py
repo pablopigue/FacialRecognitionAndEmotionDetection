@@ -45,7 +45,7 @@ while True:
     if not success:
         break
 
-    # DETECCIÓN DE CARAS
+    # Detección de caras
     # Pasamos device=device para usar la GPU si se seleccionó
     face_results = face_model(frame, conf=0.5, device=device, verbose=False, stream=True)
 
