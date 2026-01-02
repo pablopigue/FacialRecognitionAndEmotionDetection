@@ -1,20 +1,20 @@
 from ultralytics import YOLO
 import cv2
 import numpy as np
-import torch # Importante para detectar la GPU
+import torch
 
 # -----------------------------------------
-# 0. Detectar Dispositivo (CUDA o CPU)
+# Detectar Dispositivo CUDA o CPU
 # -----------------------------------------
 # Si hay GPU NVIDIA disponible y PyTorch con CUDA instalado, usa 'cuda'. Si no, 'cpu'.
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
-print(f"🚀 Dispositivo seleccionado: {device.upper()}")
+print(f"Dispositivo seleccionado: {device.upper()}")
 
 if device == 'cuda':
     print(f"   Nombre GPU: {torch.cuda.get_device_name(0)}")
 
 # -----------------------------------------
-# 1. Cargar modelos
+# Cargar modelos
 # -----------------------------------------
 print("Cargando modelos...")
 face_model = YOLO("./yolov8_face/weights/best.pt")
@@ -25,7 +25,7 @@ face_model.to(device)
 emotion_model.to(device)
 
 # -----------------------------------------
-# 2. Iniciar captura de video
+# Iniciar captura de video
 # -----------------------------------------
 cap = cv2.VideoCapture(0) # 0 para webcam, o ruta del archivo
 
@@ -38,7 +38,7 @@ frame_height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
 print("Iniciando detección. Presiona 'q' para salir.")
 
 # -----------------------------------------
-# 3. Bucle de procesamiento
+# Bucle de procesamiento
 # -----------------------------------------
 while True:
     success, frame = cap.read()
@@ -55,7 +55,7 @@ while True:
             # Obtener coordenadas
             x1, y1, x2, y2 = map(int, box.xyxy[0].tolist())
 
-            # CLAMPING: Asegurar que las coordenadas no salgan de la imagen
+            # Clamping: Asegurar que las coordenadas no salgan de la imagen
             x1, y1 = max(0, x1), max(0, y1)
             x2, y2 = min(frame_width, x2), min(frame_height, y2)
 
@@ -65,7 +65,7 @@ while True:
             if face_crop.size == 0:
                 continue
 
-            # DETECCIÓN DE EMOCIONES (Sobre el recorte)
+            # Detección de emociones sobre el recorte
             emotion_results = emotion_model(face_crop, conf=0.5, device=device, verbose=False)[0]
 
             if len(emotion_results.boxes) > 0:
@@ -78,7 +78,7 @@ while True:
                 conf = 0.0
                 color = (0, 255, 255) # Amarillo
 
-            # DIBUJAR (Visualización)
+            # Visualización
             cv2.rectangle(frame, (x1, y1), (x2, y2), color, 2)
             
             label = f"{emotion_name} {conf:.2f}"
@@ -90,7 +90,7 @@ while True:
                         cv2.FONT_HERSHEY_SIMPLEX, 0.6, color, 2)
 
     # -----------------------------------------
-    # 4. Mostrar
+    # Mostrar
     # -----------------------------------------
     cv2.imshow("YOLOv8 Real-Time", frame)
 

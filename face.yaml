@@ -1,14 +1,12 @@
-# affectnet.yaml - Versión Final Corregida
 # ----------------------------------------------------------------------
 # RUTA BASE: Donde se encuentra /train, /val, y /test
 # ----------------------------------------------------------------------
 path: /mnt/homeGPU/pablomarpa/data2/images	
 
 # Rutas de entrenamiento, validación y prueba:
-# ¡IMPORTANTE! Apuntar a la carpeta que contiene las subcarpetas /images y /labels.
+# Apunta a la carpeta que contiene las subcarpetas /images y /labels.
 train: train
 val: val
-
 
 # ----------------------------------------------------------------------
 # CLASES

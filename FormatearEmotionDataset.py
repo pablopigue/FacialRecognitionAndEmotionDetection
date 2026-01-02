@@ -35,7 +35,7 @@ class YoloEmotionDataset(Dataset):
         img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
         h, w, _ = img.shape
         
-        # Leer etiquetas YOLO (puede haber varias, usamos la primera cara)
+        # Leer etiquetas YOLO puede haber varias, usamos la primera cara pues en dataset las imagenes contienen una única cara
         with open(label_path, 'r') as f:
             lines = f.readlines()
         
@@ -43,7 +43,7 @@ class YoloEmotionDataset(Dataset):
             # Imagen sin anotaciones: devolver tensor vacío
             return torch.zeros(3, self.img_size, self.img_size), 0
         
-        # Tomamos la primera anotación (asumiendo una cara)
+        # Tomamos la anotación
         cls, x, y, bw, bh = map(float, lines[0].split())
         x, y, bw, bh = x * w, y * h, bw * w, bh * h
         
