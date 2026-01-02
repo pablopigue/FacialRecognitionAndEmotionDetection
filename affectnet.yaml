@@ -1,0 +1,27 @@
+# affectnet.yaml - Versión Final Corregida
+# ----------------------------------------------------------------------
+# RUTA BASE: Donde se encuentra /train, /val, y /test
+# ----------------------------------------------------------------------
+path: /mnt/homeGPU/pablomarpa/data/archive/YOLO_format	
+
+# Rutas de entrenamiento, validación y prueba:
+# ¡IMPORTANTE! Apuntar a la carpeta que contiene las subcarpetas /images y /labels.
+train: train
+val: valid
+test: test
+
+# ----------------------------------------------------------------------
+# CLASES
+# ----------------------------------------------------------------------
+nc: 8
+names:
+  [
+    "Anger",
+    "Contempt",
+    "Disgust",
+    "Fear",
+    "Happy",
+    "Neutral",
+    "Sad",
+    "Surprise",
+  ]
