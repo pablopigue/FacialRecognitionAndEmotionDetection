@@ -1,7 +1,7 @@
 # EntregaVc
 Para poder ejecutar los .py se debe tener ultralytics instalado, para ello dos opciones:
     pip install ultralytics
-Crear entorno python e instalar ultralytics:
+Crear entorno python e instalar ultralytics para linux:
     python3 -m venv venv 
     source ./venv/bin/activate
     pip install ultralytics 
