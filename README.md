@@ -55,7 +55,7 @@ Esta carpeta contiene los resultados del detector de caras: las matrices de conf
 
 
 
-### applicationFinal.py
+### aplicacionFinal.py
 
 
 
@@ -63,7 +63,7 @@ Ejecutable del programa final, que combina tanto la detección de caras como la 
 
 
 ```
-python3 applicationFinal.py*
+python3 aplicacionFinal.py*
 ```
 
 
