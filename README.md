@@ -63,7 +63,7 @@ Ejecutable del programa final, que combina tanto la detección de caras como la 
 
 
 ```
-python3 aplicacionFinal.py*
+python3 aplicacionFinal.py
 ```
 
 
