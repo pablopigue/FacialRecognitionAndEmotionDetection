@@ -1,6 +1,75 @@
-# EntregaVc
+# Proyect
+
+## Environment Configuration
+
+To execute the `.py` files, `ultralytics` must be installed. There are two options for this:
+
+`pip install ultralytics`
+
+Create a Python environment and install ultralytics for Linux:
+```bash
+python3 -m venv venv
+source ./venv/bin/activate
+pip install ultralytics
+
+To run, simply use python *.py, where * is the name of the file to execute.
+
+For Windows, use the following commands:
+
+python3 -m venv venv
+
+.\venv\Scripts\Activate.ps1
+
+Set-ExecutionPolicy -Scope CurrentUsr -ExecutionPolicy RemoteSigned
+
+pip install ultralytics
+
+File Description
+caras_extraidas
+When executing the code pruebaModeloDeteccionCaras.py on an image, the faces extracted from that image are saved in the <kbd>caras_extraidas</kbd> folder.
+
+emociones_extraidas
+When executing the code pruebaModeloDeteccionEmociones on one or multiple faces, the results are saved in the <kbd>emociones_extraidas</kbd> folder. These are images with a bounding box around the face and text encoding the emotion.
+
+imagenesPruebaManual
+To check how the trained model behaves before implementing real-time operation, the models are tested separately with example images stored in this folder.
+
+yolo_v8 emotion
+This folder stores the results of the emotion detection model: weights, precision graphs, recall, confusion matrices, visual results from some epochs, etc.
+
+yolov8_face
+This folder contains the results of the face detector: confusion matrices, learning curves, and parameter comparisons with metrics. It also contains images with different training batches showing detected faces, as well as their confidence score that the detection is a face. "args.yaml" shows the model training data.
+
+aplicacionFinal.py
+The executable for the final program, which combines both face detection and emotion detection. To use it, once the environment is configured, use the line:
+
+python3 aplicacionFinal.py
+
+During execution, a pop-up window may appear to grant camera permissions to the application.
+
+DeepFace.ipynb
+Initially, we tried to perform the training and project execution using Google Colab, but this was not possible because we exceeded the allowed execution times and received a penalty. Not only that, but this platform does not allow real-time execution. Proof of this is this Notebook, where we download a model and can detect emotions from photographs. Challenges arose, such as bridging the connection between Google resources and our device hardware.
+
+emotions.yaml
+Contains both the paths to determine the training, validation, and test datasets, as well as the emotion labels.
+
+face.yaml
+Contains both the paths to determine the training, validation, and test datasets, and the class declaration (there is only one possible class).
+
+pruebaModeloDeteccionCaras.py
+Script that loads the trained face detection model and executes it on test images located in <kbd>imagenesPruebaManual</kbd>. It crops the regions identified as faces and saves them individually in the <kbd>caras_extraidas</kbd> folder, allowing verification of the detection quality in isolation.
+
+pruebaModeloDeteccionEmociones.py
+Script designed to validate the emotion classification model. It takes cropped face images as input, predicts the corresponding emotion using the trained weights, and saves the visual result (image with label and probability) in the <kbd>emociones_extraidas</kbd> folder.
+
+train_face_yolo.py
+Code responsible for starting the training of the specific YOLOv8 model for face detection. It reads the dataset configuration from face.yaml and, after completing the defined epochs, saves the resulting weights ('best.pt' and 'last.pt') and performance metrics in the <kbd>yolov8_face</kbd> folder. Note that since the datasets are not included, this file is merely for visualization of how it was done, as its execution will not actually work. If you wish to test it, you must download the datasets presented in deteccion_de_emociones.pdf.
+
+train_yolo_emotion.py
+Code responsible for training the model for emotion classification. It uses the configuration defined in emotions.yaml to process the dataset and generates the weights files, confusion matrices, and learning graphs stored in the <kbd>yolo_v8 emotion</kbd> folder. Note that since the datasets are not included, this file is merely for visualization of how it was done, as its execution will not actually work. If you wish to test it, you must download the datasets presented in deteccion_de_emociones.pdf.
 
 
+# Proyecto
 
 ## Configuración del entorno
 
