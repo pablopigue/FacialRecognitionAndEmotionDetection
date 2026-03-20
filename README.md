@@ -1,3 +1,70 @@
+# Project
+
+## Environment Setup
+
+To run the `.py` files, you must have `ultralytics` installed. There are two ways to do this:
+
+**Option 1:**
+pip install ultralytics
+
+**Option 2: Create a Python virtual environment and install (Linux):**
+```bash
+python3 -m venv venv
+source ./venv/bin/activate
+pip install ultralytics
+
+To run a script, simply use python *.py, replacing * with the name of the file you wish to execute.
+
+For Windows, use the following commands:
+python3 -m venv venv
+.\venv\Scripts\Activate.ps1
+Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
+pip install ultralytics
+
+## File Descriptions
+caras_extraidas
+When running the pruebaModeloDeteccionCaras.py script on an image, the faces extracted from that image are saved in this folder.
+
+### emociones_extraidas
+When running pruebaModeloDeteccionEmociones.py on one or more faces, the results are saved here. These are images featuring a bounding box around the face and text encoding the detected emotion.
+
+### imagenesPruebaManual
+This folder stores sample images used to test the models separately and check their performance before implementing real-time functionality.
+
+### yolo_v8 emotion
+This folder stores the results of the emotion detection model: weights, precision/recall charts, confusion matrices, and visual results from various epochs.
+
+### yolov8_face
+This folder contains the face detector results: confusion matrices, learning curves, and parameter metric comparisons. It also includes images of different training batches showing detected faces and their confidence scores. The file args.yaml displays the model's training data.
+
+### aplicacionFinal.py
+The main executable program that combines both face and emotion detection. Once the environment is set up, run it using:
+
+python3 aplicacionFinal.py
+
+During execution, a pop-up window may appear asking for permission to access the camera.
+
+### DeepFace.ipynb
+Initially, we attempted to train and execute the project using Google Colab. However, this was not possible as we exceeded the permitted execution times and faced penalties. Furthermore, Colab does not support real-time execution. This Notebook serves as proof of our initial work, where we downloaded a model to detect emotions from photos. It highlights challenges such as connecting Google resources to local hardware.
+
+### emotions.yaml
+Contains the paths for the training, validation, and test datasets, as well as the emotion labels.
+
+### face.yaml
+Contains the paths for the training, validation, and test datasets, along with the class declarations (only one class possible).
+
+### pruebaModeloDeteccionCaras.py
+A script that loads the trained facial detection model and runs it on test images located in imagenesPruebaManual. It crops the identified face regions and saves them individually in caras_extraidas, allowing for isolated verification of detection quality.
+
+### pruebaModeloDeteccionEmociones.py
+A script designed to validate the emotion classification model. It takes cropped face images as input, predicts the corresponding emotion using the trained weights, and saves the visual result (labeled image with probability) in emociones_extraidas.
+
+### train_face_yolo.py
+The script responsible for starting the YOLOv8 model training specifically for face detection. It reads the dataset configuration from face.yaml and, upon completion, saves the resulting weights (best.pt and last.pt) and performance metrics in yolov8_face. Note: Since the datasets are not included, this file is for reference only. To run it, you must download the datasets mentioned in deteccion_de_emociones.pdf.
+
+### train_yolo_emotion.py
+The script responsible for training the emotion classification model. It uses the configuration in emotions.yaml to process the dataset and generates weight files, confusion matrices, and learning charts stored in yolo_v8 emotion. Note: Since the datasets are not included, this file is for reference only. To run it, you must download the datasets mentioned in deteccion_de_emociones.pdf.
+
 # Proyecto
 
 ## Configuración del entorno
