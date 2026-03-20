@@ -10,6 +10,7 @@ pip install ultralytics
 **Option 2: Create a Python virtual environment and install (Linux):**
 ```bash
 python3 -m venv venv
+```
 source ./venv/bin/activate
 pip install ultralytics
 
