@@ -10,17 +10,19 @@ pip install ultralytics
 **Option 2: Create a Python virtual environment and install (Linux):**
 ```bash
 python3 -m venv venv
-```
 source ./venv/bin/activate
 pip install ultralytics
+```
 
 To run a script, simply use python *.py, replacing * with the name of the file you wish to execute.
 
 For Windows, use the following commands:
+```bash
 python3 -m venv venv
 .\venv\Scripts\Activate.ps1
 Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
 pip install ultralytics
+```
 
 ## File Descriptions
 caras_extraidas
@@ -41,7 +43,9 @@ This folder contains the face detector results: confusion matrices, learning cur
 ### aplicacionFinal.py
 The main executable program that combines both face and emotion detection. Once the environment is set up, run it using:
 
+```bash
 python3 aplicacionFinal.py
+```
 
 During execution, a pop-up window may appear asking for permission to access the camera.
 
